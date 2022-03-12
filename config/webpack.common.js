@@ -4,7 +4,7 @@ const path = require("path");
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
-  entry: "./src/index.js",
+  entry: "./src/index.tsx",
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "[name].[contenthash].js",
@@ -13,8 +13,8 @@ module.exports = {
   module: {
     rules: [
       {
-        use: "babel-loader",
-        test: /\.(js|jsx)$/,
+        use: ["ts-loader"],
+        test: /\.(ts|tsx)$/,
         exclude: /node_modules/,
       },
       {
@@ -28,7 +28,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".js", ".json", ".jsx"],
+    extensions: [".js", ".json", ".jsx",".ts",".tsx"],
   },
   plugins: [
     new CleanWebpackPlugin(),
